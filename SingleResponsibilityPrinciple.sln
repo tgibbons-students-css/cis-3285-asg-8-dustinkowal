@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleResponsibilityPrinciple", "SingleResponsibilityPrinciple\SingleResponsibilityPrinciple.csproj", "{F850FD91-C460-4B0B-B662-4113C5A6C6A7}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{240CD2A1-6984-4BFC-979F-5F6B0B108798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleResponsibilityPrincipleTests", "SingleResponsibilityPrincipleTests\SingleResponsibilityPrincipleTests.csproj", "{C1E15894-BAF6-40BE-9A78-4BAC344D4A49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +25,15 @@ Global
 		{240CD2A1-6984-4BFC-979F-5F6B0B108798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{240CD2A1-6984-4BFC-979F-5F6B0B108798}.Release|Any CPU.Build.0 = Release|Any CPU
 		{240CD2A1-6984-4BFC-979F-5F6B0B108798}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C1E15894-BAF6-40BE-9A78-4BAC344D4A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E15894-BAF6-40BE-9A78-4BAC344D4A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E15894-BAF6-40BE-9A78-4BAC344D4A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E15894-BAF6-40BE-9A78-4BAC344D4A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {665F3F6D-F3A2-4B7F-85D1-6A22DC3EB221}
 	EndGlobalSection
 EndGlobal
