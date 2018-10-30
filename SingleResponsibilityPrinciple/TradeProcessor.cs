@@ -37,6 +37,12 @@ namespace SingleResponsibilityPrinciple
                     continue;
                 }
 
+                //checks for negative value
+                if (int.Parse(fields[1]) <= 0)
+                {
+                    continue;
+                }
+
                 var trade = MapTradeDataToTradeRecord(fields);
 
                 trades.Add(trade);

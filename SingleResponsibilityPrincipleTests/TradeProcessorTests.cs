@@ -2,6 +2,7 @@
 using SingleResponsibilityPrinciple;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -17,10 +18,13 @@ namespace SingleResponsibilityPrinciple.Tests
         {
             using (var connection = new System.Data.SqlClient.SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\dkowal\source\repos\cis-3285-asg-8-dustinkowal\tradesdatabase.mdf;Integrated Security=True;Connect Timeout=30"))
             {
-                connection.Open();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 string myScalarQuery = "SELECT COUNT(*) FROM trade";
                 SqlCommand myCommand = new SqlCommand(myScalarQuery, connection);
-                myCommand.Connection.Open();
+                //myCommand.Connection.Open();
                 int count = (int)myCommand.ExecuteScalar();
                 connection.Close();
                 return count;
@@ -41,6 +45,40 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             int countA = CountDbRecords();
             Assert.AreEqual(countB + 4, countA);
+        }
+
+        [TestMethod()]
+        public void TestBadFile()
+        //modify so it calls count before and after process trades
+        {
+            //Arrange
+            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SingleResponsibilityPrincipleTests.badtrades.txt");
+            var tradeProcessor = new TradeProcessor();
+
+            //Act
+            int countB = CountDbRecords();
+            tradeProcessor.ProcessTrades(tradeStream);
+
+            //Assert
+            int countA = CountDbRecords();
+            Assert.AreEqual(countB, countA);
+        }
+
+        [TestMethod()]
+        public void TestNegative()
+        //modify so it calls count before and after process trades
+        {
+            //Arrange
+            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SingleResponsibilityPrincipleTests.negativetrades.txt");
+            var tradeProcessor = new TradeProcessor();
+
+            //Act
+            int countB = CountDbRecords();
+            tradeProcessor.ProcessTrades(tradeStream);
+
+            //Assert
+            int countA = CountDbRecords();
+            Assert.AreEqual(countB, countA);
         }
     }
 }
