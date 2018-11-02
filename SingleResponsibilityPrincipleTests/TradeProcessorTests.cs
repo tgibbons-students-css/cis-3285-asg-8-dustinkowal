@@ -80,5 +80,33 @@ namespace SingleResponsibilityPrinciple.Tests
             int countA = CountDbRecords();
             Assert.AreEqual(countB, countA);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void NoTestFile()
+        {
+            //Arrange
+            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("");
+            var tradeProcessor = new TradeProcessor();
+
+            //Act
+            tradeProcessor.ProcessTrades(tradeStream);
+
+            //Assert
+
+        }
+        [TestMethod]
+        public void TestMultipleTradesInFile()
+        {
+            // Arrange
+            var tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SingleResponsibilityPrincipleTests.trades4.txt");
+            var tradeProcessor = new TradeProcessor();
+            int startCount = CountDbRecords();
+            // Act
+            tradeProcessor.ProcessTrades(tradeStream);
+            int endCount = CountDbRecords();
+            // Assert
+            Assert.AreEqual(endCount - startCount, 7);
+        }
     }
 }

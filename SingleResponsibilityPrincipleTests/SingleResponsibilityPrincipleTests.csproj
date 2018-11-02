@@ -77,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="negativetrades.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="multipletrades.txt" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
